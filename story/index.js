@@ -8,11 +8,12 @@ story.tools.map = function(list) {
 };
 
 story.scenary = function(name) {
-    return require("./scenaries/"+name);
+    var scenary = require("./scenaries/"+name);
+    console.log(scenary.init_message);
+    return scenary;
 };
 
 story.Create = function(ammount, obj) {
-    console.log("Creating", ammount, obj.message+"s");
     var list = [];
     for (var i = 0; i < ammount; i++) {
         list.push(new obj());

@@ -15,9 +15,11 @@ try {
 }
 
 function voyage(spaceport, ship_ids, destination) {
+    spaceport.say("Mr. Sulu, set course to", destination);
     if (!space.existsWoldAt(destination)) {
         throw space.DestinationError(destination);
     }
+    spaceport.setCourse(destination);
     story.do(spaceport.launch).allThe(ship_ids.filter(function(id) {
         return spaceport.isReady(id);
     }));

@@ -1,4 +1,11 @@
+var say = function() {
+    var args = Array.prototype.slice.call(arguments);
+    return process.stdout.write([this.message, this.id, "said:"].concat(args).join(" ")+"\n");
+};
+
 var space = module.exports = {};
+
+space.init_message = "A long time ago, in a galaxy far, far away...";
 
 space.message = "Space";
 
@@ -21,7 +28,7 @@ space.existsWoldAt = function(destination) {
 };
 
 space.DestinationError = function(d) {
-    return new Error("Destination "+d+" doesn't have a planet.");
+    return new Error("Destination "+d+" doesn't have a planet, Captain.");
 };
 
 var port_ids = 0;
@@ -30,25 +37,31 @@ space.Port = function() {
     var port     = {};
     port.id      = port_ids++;
     port.message = space.message + " Port";
+    port.course  = 0;
     port.ships   = {};
+    port.say     = say.bind(port);
 
     port.host = function(ship) {
-        console.log(port.message, port.id, "hosting ship:", ship.id);
+        port.say("hosted", ship.message, ship.id);
         port.ships[ship.id] = ship;
     };
 
     port.isReady = function(id) {
-        var answer = port.ships[id].ready ? "yes!" : "no.";
-        console.log(port.message, port.id, "is", id, "ready?", answer);
+        var ship   = port.ships[id];
+        var answer = ship.ready ? "yes!" : "no.";
+        port.say("is", ship.message, id, "ready?", answer);
         return port.ships[id].ready;
+    };
+
+    port.setCourse = function(course) {
+        port.course = course;
     };
 
     port.launch = function(id) {
         var ship = port.ships[id];
-        console.log(port.message, port.id, "is launching", ship.message, ship.id);
+        port.say("launching", ship.message, ship.id, "to", port.course);
     };
 
-    console.log("New", port.message, port.id);
     return port;
 };
 
@@ -59,13 +72,13 @@ space.Ship = function() {
     ship.id      = ship_ids++;
     ship.message = space.message + " Ship";
     ship.ready   = false;
+    ship.say     = say.bind(ship);
 
     ship.setReady = function() {
-        console.log(this.message, this.id, "is ready!");
+        ship.say("I'm ready!");
         this.ready = true;
     };
 
-    console.log("New Ship", ship.id);
     return ship;
 };
 
