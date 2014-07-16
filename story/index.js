@@ -13,10 +13,11 @@ story.scenary = function(name) {
     return scenary;
 };
 
-story.Create = function(ammount, obj) {
+story.Create = function(ammount, constructor) {
     var list = [];
+    var args = Array.prototype.slice.call(arguments, 2);
     for (var i = 0; i < ammount; i++) {
-        list.push(new obj());
+        list.push(constructor.apply(null, args));
     }
     return list;
 };
