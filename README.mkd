@@ -5,9 +5,9 @@ with `node`. For example:
 
     node space_voyage.js
     A long time ago, in a galaxy far, far away...
-    Space Port 0 said: hosted Space Ship 0
-    Space Port 0 said: hosted Space Ship 1
-    Space Port 0 said: hosted Space Ship 2
+    Space Port 0 said: hosted Space Ship Destroyer
+    Space Port 0 said: hosted Space Ship Destroyer 2
+    Space Port 0 said: hosted Space Ship Destroyer 3
     Space Port 0 said: hosted Space Ship USS Voyager
     Space Ship USS Voyager said: I'm ready!
     Space Port 0 said: Mr. Sulu, set course to Vulcan

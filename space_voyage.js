@@ -2,7 +2,7 @@ var story = require("./story");
 var space = story.scenary("space");
 
 var spaceport = new space.Port();
-var ships     = story.Create(3, space.Ship);
+var ships     = story.Create(3, space.Ship, "Destroyer");
 var voyager   = space.Ship("USS Voyager");
 
 ships.push(voyager);
