@@ -12,18 +12,31 @@ space.message = "Space";
 space.destinations = [];
 
 space.createDestinations = function(n) {
+    var fs   = require("fs");
+    var data = fs.readFileSync(__dirname+"/star_trek_places.csv");
+    var places = data.toString().replace(/\n/g, "").split(",");
+    var added = {};
+    function getRandomPlace() {
+        var place = places[Math.floor(Math.random() * places.length)];
+        while (added[place]) {
+            place = places[Math.floor(Math.random() * places.length)];
+        }
+        added[place] = true;
+        return place;
+    }
     for (var i = 0; i < n; i++) {
-        this.destinations[i] = Math.random() > 0.5;
+        var has_planet = Math.random() > 0.5;
+        space.destinations[i] = has_planet ? getRandomPlace() : has_planet;
     }
 };
 
 space.createDestinations(100);
 
 space.RandomDestination = function() {
-    return Math.floor(Math.random() * this.destinations.length);
+    return Math.floor(Math.random() * space.destinations.length);
 };
 
-space.existsWoldAt = function(destination) {
+space.existsWorldAt = function(destination) {
     return this.destinations[destination];
 };
 
@@ -54,8 +67,9 @@ space.Port = function() {
     };
 
     port.setCourseTo = function(course) {
+        course = space.existsWorldAt(course) || course;
         port.say("Mr. Sulu, set course to", course);
-        if (!space.existsWoldAt(course)) {
+        if (typeof course === "number") {
             throw space.DestinationError(course);
         }
         port.course = course;
