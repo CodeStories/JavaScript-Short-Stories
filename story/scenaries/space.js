@@ -53,7 +53,7 @@ space.Port = function() {
         return port.ships[id].ready;
     };
 
-    port.setCourse = function(course) {
+    port.setCourseTo = function(course) {
         port.course = course;
     };
 

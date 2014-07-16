@@ -19,7 +19,7 @@ function voyage(spaceport, ship_ids, destination) {
     if (!space.existsWoldAt(destination)) {
         throw space.DestinationError(destination);
     }
-    spaceport.setCourse(destination);
+    spaceport.setCourseTo(destination);
     story.do(spaceport.launch).allThe(ship_ids.filter(function(id) {
         return spaceport.isReady(id);
     }));
