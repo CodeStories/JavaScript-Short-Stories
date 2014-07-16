@@ -8,10 +8,11 @@ with `node`. For example:
     Space Port 0 said: hosted Space Ship 0
     Space Port 0 said: hosted Space Ship 1
     Space Port 0 said: hosted Space Ship 2
-    Space Ship 0 said: I'm ready!
-    Space Port 0 said: Mr. Sulu, set course to 42
-    Space Port 0 said: is Space Ship 0 ready? yes!
-    Space Port 0 said: launching Space Ship 0 to 42
+    Space Port 0 said: hosted Space Ship USS Voyager
+    Space Ship USS Voyager said: I'm ready!
+    Space Port 0 said: Mr. Sulu, set course to Vulcan
+    Space Port 0 said: is Space Ship USS Voyager ready? yes!
+    Space Port 0 said: launching Space Ship USS Voyager to Vulcan
 
 The stories are fully described inside the source code, the logs and
 the output hopefully one day will resemble a humanly written story.
