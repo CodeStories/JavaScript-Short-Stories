@@ -22,6 +22,10 @@ story.Create = function(ammount, constructor) {
     return list;
 };
 
+story.upTo = function(value) {
+    return Math.floor(Math.random() * value);
+};
+
 story.selectAll = function(key) {
     return {
         from: story.tools.map.bind({ f: function(e) {
@@ -33,5 +37,16 @@ story.selectAll = function(key) {
 story.do = function(f) {
     return {
         allThe: story.tools.map.bind({ f: f })
+    };
+};
+
+story.allThe = function(list) {
+    return {
+        do: function(f_name) {
+            var args = Array.prototype.slice.call(arguments, 1);
+            list.map(function(e) {
+                e[f_name].apply(null, args);
+            });
+        }
     };
 };
