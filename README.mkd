@@ -1,11 +1,7 @@
 ﻿# JavaScript Short Stories
 
-This, as well as all the other _Short Stories_ repos in this
-community, is a collection of short stories written in programming
-languages, in this case: JavaScript.
-
-To excecute any of the short stories, simply run them with `node`. For
-example:
+Short stories written in JavaScript. To execute them, simply run them
+with `node`. For example:
 
     node space_voyage.js
     A long time ago, in a galaxy far, far away...
