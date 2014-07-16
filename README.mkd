@@ -16,3 +16,14 @@ with `node`. For example:
 
 The stories are fully described inside the source code, the logs and
 the output hopefully one day will resemble a humanly written story.
+
+## Generating an image from the source code
+
+Part of the idea of `#CodeStories` is to tweet images using this
+hashtag, so, in order to generate the image, one of the simpliest
+approaches could be to use `convert`, for example, like this:
+
+    convert -size 620x220 xc:white -font DejaVu-Sans-Mono -pointsize 14 -fill black -draw "text 20,40 '$(< cow_butterfly.js)'" cow_butterfly.png
+
+Make sure to adjust the values to generate the final image as
+preferred.
