@@ -21,8 +21,11 @@ the output hopefully one day will resemble a humanly written story.
 
 Part of the idea of `#CodeStories` is to tweet images using this
 hashtag, so, in order to generate the image, one of the simpliest
-approaches could be to use `convert`, for example, like this:
+approaches could be to use `convert`, some examples:
 
+    # For space_voyage.js
+    convert -size 590x450 xc:white -font DejaVu-Sans-Mono -pointsize 14 -fill black -draw "text 20,40 '$(< space_voyage.js)'" space_voyage.png
+    # For cow_butterfly.js
     convert -size 590x220 xc:white -font DejaVu-Sans-Mono -pointsize 14 -fill black -draw "text 20,40 '$(< cow_butterfly.js)'" cow_butterfly.png
 
 Make sure to adjust the values to generate the final image as
