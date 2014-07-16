@@ -1,7 +1,4 @@
-var say = function() {
-    var args = Array.prototype.slice.call(arguments);
-    return process.stdout.write([this.message, this.id, "said:"].concat(args).join(" ")+"\n");
-};
+var tools = require("../tools");
 
 var space = module.exports = {};
 
@@ -44,15 +41,15 @@ space.DestinationError = function(d) {
     return new Error("Destination "+d+" doesn't have a planet, Captain.");
 };
 
-var port_ids = 0;
+var ports = {};
 
-space.Port = function() {
+space.Port = function(name) {
     var port     = {};
-    port.id      = port_ids++;
+    port.id      = tools.getId(name, ports);
     port.message = space.message + " Port";
     port.course  = 0;
     port.ships   = {};
-    port.say     = say.bind(port);
+    port.say     = tools.say.bind(port);
 
     port.host = function(ship) {
         port.say("hosted", ship.message, ship.id);
@@ -83,14 +80,14 @@ space.Port = function() {
     return port;
 };
 
-var ship_ids = 0;
+var ships = {};
 
 space.Ship = function(name) {
     var ship     = {};
-    ship.id      = name || ship_ids++;
+    ship.id      = tools.getId(name, ships);
     ship.message = space.message + " Ship";
     ship.ready   = false;
-    ship.say     = say.bind(ship);
+    ship.say     = tools.say.bind(ship);
 
     ship.setReady = function() {
         ship.say("I'm ready!");
