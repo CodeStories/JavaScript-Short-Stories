@@ -54,6 +54,10 @@ space.Port = function() {
     };
 
     port.setCourseTo = function(course) {
+        port.say("Mr. Sulu, set course to", course);
+        if (!space.existsWoldAt(course)) {
+            throw space.DestinationError(course);
+        }
         port.course = course;
     };
 
