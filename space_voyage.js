@@ -3,13 +3,16 @@ var space = story.scenary("space");
 
 var spaceport = new space.Port();
 var ships     = story.Create(3, space.Ship);
+var voyager   = space.Ship("USS Voyager");
+
+ships.push(voyager);
 
 story.do(spaceport.host).allThe(ships);
 
-ships[0].setReady();
+voyager.setReady();
 
 try {
-    voyage(spaceport, [ships[0].id], space.RandomDestination());
+    voyage(spaceport, [voyager.id], space.RandomDestination());
 } catch(e) {
     console.error(e);
 }

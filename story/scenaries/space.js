@@ -85,9 +85,9 @@ space.Port = function() {
 
 var ship_ids = 0;
 
-space.Ship = function() {
+space.Ship = function(name) {
     var ship     = {};
-    ship.id      = ship_ids++;
+    ship.id      = name || ship_ids++;
     ship.message = space.message + " Ship";
     ship.ready   = false;
     ship.say     = say.bind(ship);
